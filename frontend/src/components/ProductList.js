@@ -10,9 +10,16 @@ const ProductList = () => {
   const [category, setCategory] = useState("All");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    const API_URL = process.env.REACT_APP_API_URL;
+
+    console.log("Fetching from:", `${API_URL}/api/products`);
+
+    axios
+      .get(`${API_URL}/api/products`)
       .then((res) => setProducts(res.data))
-      .catch((err) => console.error("❌ Error loading products:", err));
+      .catch((err) =>
+        console.error("❌ Error loading products from API:", err)
+      );
   }, []);
 
   const filtered = products.filter(
@@ -35,3 +42,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
