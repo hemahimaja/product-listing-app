@@ -10,14 +10,18 @@ const Navbar = ({ cartItems, onRemove }) => {
     <nav className="navbar">
       <div className="navbar-left">
         <Link to="/" className="logo">🛍️ SmartShop</Link>
+        <Link to="/products" className="nav-link">Shop</Link>
       </div>
 
       <div className="navbar-right">
-        <Link to="/products" className="nav-link">Shop</Link>
-
-        <div className="cart-icon" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+        <div
+          className="cart-icon"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
           🛒
-          <span className="badge">{cartItems?.length || 0}</span>
+          {cartItems.length > 0 && (
+            <span className="cart-count">{cartItems.length}</span>
+          )}
         </div>
 
         {isDropdownOpen && (

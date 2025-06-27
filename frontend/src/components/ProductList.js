@@ -10,10 +10,13 @@ const ProductList = ({ onAddToCart }) => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
+  // ✅ Use the .env variable
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   useEffect(() => {
     console.log("🔄 Fetching products from backend...");
     axios
-      .get("http://localhost:5000/api/products")
+      .get(`${API_BASE_URL}/api/products`)
       .then((res) => {
         setProducts(res.data);
         console.log("✅ Products loaded:", res.data);
@@ -21,7 +24,7 @@ const ProductList = ({ onAddToCart }) => {
       .catch((err) => {
         console.error("❌ Error fetching products:", err);
       });
-  }, []);
+  }, [API_BASE_URL]);
 
   const filtered = products.filter(
     (p) =>
