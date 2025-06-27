@@ -1,0 +1,14 @@
+/* src/components/FilterBar.css */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin: 20px;
+  justify-content: center;
+}
+
+.filter-bar select {
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+

@@ -1,26 +1,28 @@
+// src/components/FilterBar.js
 import React from "react";
+import "./FilterBar.css";
 
-const FilterBar = ({ category, setCategory, rating, setRating, priceRange, setPriceRange }) => {
+const FilterBar = ({ category, setCategory, setRating, setPrice }) => {
   return (
     <div className="filter-bar">
-      <select onChange={(e) => setCategory(e.target.value)} value={category}>
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="All">All Categories</option>
         <option value="Electronics">Electronics</option>
-        <option value="Accessories">Accessories</option>
         <option value="Footwear">Footwear</option>
+        <option value="Accessories">Accessories</option>
       </select>
 
-      <select onChange={(e) => setRating(e.target.value)} value={rating}>
+      <select onChange={(e) => setRating(Number(e.target.value))}>
         <option value="0">All Ratings</option>
-        <option value="4">4★ & above</option>
-        <option value="3">3★ & above</option>
+        <option value="4.5">4.5 ★ & above</option>
+        <option value="4">4 ★ & above</option>
+        <option value="3.5">3.5 ★ & above</option>
       </select>
 
-      <select onChange={(e) => setPriceRange(e.target.value)} value={priceRange}>
-        <option value="All">All Prices</option>
-        <option value="0-999">Below ₹1000</option>
-        <option value="1000-1999">₹1000 - ₹1999</option>
-        <option value="2000">Above ₹2000</option>
+      <select onChange={(e) => setPrice(Number(e.target.value))}>
+        <option value="0">Sort by Price</option>
+        <option value="1">Low to High</option>
+        <option value="-1">High to Low</option>
       </select>
     </div>
   );
