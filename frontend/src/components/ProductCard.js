@@ -1,19 +1,15 @@
 import React from "react";
-import "./ProductCard.css"; // We'll style it separately
+import "./ProductCard.css";
 
-const ProductCard = ({ product }) => {
-  if (!product) return null;
-
+const ProductCard = ({ product, onAddToCart }) => {
   return (
-    <div className="card">
-      <img src={product.image} alt={product.name} className="card-img" />
-      <div className="card-details">
-        <h3>{product.name}</h3>
-        <p className="price">₹{product.price}</p>
-        <p className="rating">⭐ {product.rating}</p>
-        <small className="category-tag">{product.category}</small>
-        <button className="cart-btn">🛒 Add to Cart</button>
-      </div>
+    <div className="product-card">
+      <img src={product.image} alt={product.name} className="product-image" />
+      <h3>{product.name}</h3>
+      <p>₹{product.price}</p>
+      <p>⭐ {product.rating}</p>
+      <p><span className="category">{product.category}</span></p>
+      <button onClick={() => onAddToCart(product)}>🛒 Add to Cart</button>
     </div>
   );
 };
